@@ -1,0 +1,2 @@
+linear system itself is stable;
+inverse in EM is stable.
