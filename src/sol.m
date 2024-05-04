@@ -1,4 +1,4 @@
-function [x_EM, x_nref, time]=sol(A,y,t,T, epsilon)
+function [x_EM, x_nref, time, M_s, M]=sol(A,y,t,T, epsilon)
 % input:
 % A: m*n matrix;
 % y: n*1 vector, permuted measurement;
@@ -9,6 +9,7 @@ function [x_EM, x_nref, time]=sol(A,y,t,T, epsilon)
 % output:
 % x: n*1 vector, numerical solution;
 % time: float number;
+% M_s: svd of M;
 
 
 
@@ -20,7 +21,7 @@ function [x_EM, x_nref, time]=sol(A,y,t,T, epsilon)
 
 t1 = cputime;
 % sdp solve the system
-x_sdp = sdp_solve(x,K,t);
+[x_sdp, M_s, M] = sdp_solve(x,K,t);
 
 % refine x_sdp by newton iteration
 

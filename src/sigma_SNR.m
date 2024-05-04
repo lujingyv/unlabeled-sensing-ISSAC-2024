@@ -7,7 +7,7 @@ function sigma = sigma_SNR(n,S)
 % output:
 % sigma: float, standard deviation for gaussian noise;
 
-sigma = 10^(0.5*(log10(n)-0.1*S))/sqrt(3);
+sigma = 10^(0.5*(log10(n)-0.1*S));
 
 
 end

@@ -1,10 +1,11 @@
-function x_sdp = sdp_solve(x,K,t)
+function [x_sdp, M_s, M] = sdp_solve(x,K,t)
 % input:
 % x: unknown variables
 % K: constrain support vector;
 % t: relaxation order;
 % output:
 % x_sdp: n*1 vector, solution by sdp;
+% M_s: svd core of M;
 
 [n, ~] = size(x);
 
@@ -15,7 +16,7 @@ g0 = obj_poly(x,t);
 M = moment_solve(x,K,t);
 
 % extract solution
-x_sdp = extract_solve(M,n);
+[x_sdp,M_s] = extract_solve(M,n);
 
 
 end
@@ -58,15 +59,17 @@ M = double(mmat(mu));
 
 end
 
-function x_extract = extract_solve(M,n)
+function [x_extract,M_s] = extract_solve(M,n)
 % input:
 % M: moment matrix;
 % n: int, number of unknowns x;
 % 
 % output:
 % x_extract: n*1 vector, solution extracted from M;
+% M_s: svd core of M;
 
-[U,~,~] = svd(M);
+[U,S,~] = svd(M);
+M_s = diag(S);
 sing_vec = U(:,1);
 x_extract = zeros(n, 1);
 for index = 1:n
