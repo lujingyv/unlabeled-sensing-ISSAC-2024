@@ -1,0 +1,1 @@
+CPU time, and relative error of $\xi_{EM}$ and $\xi_{sdp}$ for Algorithm 3 with different m, observation y is corrupted by Gaussian random noise of $SNR = 60$dB, $n =4$ fixed, $20$ trails median.
