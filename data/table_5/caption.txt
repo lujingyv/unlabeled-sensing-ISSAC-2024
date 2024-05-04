@@ -1,0 +1,1 @@
+CPU time, and relative error of $\xi_{EM}$ and $\xi_{sdp}$ for Algorithm 3 with different magnitude of noise, $n =6,m=500$ fixed, $20$ trails median.
